@@ -1,0 +1,203 @@
+{
+  "workflow_name": "OutboundLeadGeneration",
+  "description": "End-to-end AI agent workflow to discover, enrich, score, contact, and learn from B2B leads using integrated APIs and feedback loops.",
+  "config": {
+    "scoring": {
+      "company_size_weight": 0.3,
+      "technology_match_weight": 0.4,
+      "role_relevance_weight": 0.3,
+      "threshold": 0.6
+    }
+  },
+  "steps": [
+    {
+      "id": "prospect_search",
+      "agent": "ProspectSearchAgent",
+      "inputs": {
+        "industry": "Software",
+        "region": "Global",
+        "job_titles": ["CTO", "Head of Engineering", "VP Technology"],
+        "company_size": "50-500"
+      },
+      "instructions": "Use Clay and Apollo APIs to identify companies and contacts matching the ICP. Return structured lead objects with minimal data.",
+      "tools": [
+        {
+          "name": "clay_search_api",
+          "config": {
+            "api_key": "{{CLAY_API_KEY}}"
+          }
+        },
+        {
+          "name": "apollo_search_api",
+          "config": {
+            "api_key": "{{APOLLO_API_KEY}}"
+          }
+        }
+      ],
+      "output_schema": {
+        "leads": [
+          {
+            "company": "string",
+            "company_domain": "string",
+            "contact_name": "string",
+            "email": "string",
+            "linkedin": "string",
+            "signal": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "enrichment",
+      "agent": "DataEnrichmentAgent",
+      "inputs": {
+        "leads": "{{prospect_search.output.leads}}"
+      },
+      "instructions": "Enrich each lead with company details and technologies using People Data Labs (PDL). Include role, company size, and tech stack.",
+      "tools": [
+        {
+          "name": "enrich_with_pdl",
+          "config": {
+            "api_key": "{{PEOPLEDATALABS_API_KEY}}"
+          }
+        }
+      ],
+      "output_schema": {
+        "enriched_leads": [
+          {
+            "company": "string",
+            "company_domain": "string",
+            "contact_name": "string",
+            "email": "string",
+            "role": "string",
+            "company_size": "string",
+            "technologies": ["string"],
+            "linkedin": "string",
+            "signal": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scoring",
+      "agent": "ScoringAgent",
+      "inputs": {
+        "enriched_leads": "{{enrichment.output.enriched_leads}}",
+        "scoring_criteria": "{{config.scoring}}"
+      },
+      "instructions": "Score and rank leads based on alignment with ICP criteria (company size, technology match, and role relevance). Return ranked list.",
+      "tools": [],
+      "output_schema": {
+        "ranked_leads": [
+          {
+            "lead_id": "string",
+            "company": "string",
+            "contact_name": "string",
+            "email": "string",
+            "score": "number"
+          }
+        ]
+      }
+    },
+    {
+      "id": "outreach_content",
+      "agent": "OutreachContentAgent",
+      "inputs": {
+        "ranked_leads": "{{scoring.output.ranked_leads}}",
+        "persona": "Sales Development Representative",
+        "tone": "friendly"
+      },
+      "instructions": "Generate personalized email outreach for each ranked lead using internal LLM reasoning. Reflect persona and tone parameters.",
+      "tools": [],
+      "output_schema": {
+        "messages": [
+          {
+            "lead_email": "string",
+            "subject": "string",
+            "email_body": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "send_outreach",
+      "agent": "OutreachExecutorAgent",
+      "inputs": {
+        "messages": "{{outreach_content.output.messages}}"
+      },
+      "instructions": "Send personalized emails through SendGrid API and log delivery details (status, timestamp, message_id).",
+      "tools": [
+        {
+          "name": "send_email_sendgrid",
+          "config": {
+            "api_key": "{{SENDGRID_API_KEY}}"
+          }
+        }
+      ],
+      "output_schema": {
+        "sent_status": [
+          {
+            "lead_email": "string",
+            "status": "string",
+            "message_id": "string",
+            "timestamp": "string"
+          }
+        ],
+        "campaign_id": "string"
+      }
+    },
+    {
+      "id": "response_tracking",
+      "agent": "ResponseTrackerAgent",
+      "inputs": {
+        "campaign_id": "{{send_outreach.output.campaign_id}}"
+      },
+      "instructions": "Monitor campaign engagement using Apollo campaign tracking — detect opens, clicks, replies, and meeting bookings.",
+      "tools": [
+        {
+          "name": "track_apollo_campaign",
+          "config": {
+            "api_key": "{{APOLLO_API_KEY}}"
+          }
+        }
+      ],
+      "output_schema": {
+        "responses": [
+          {
+            "lead_email": "string",
+            "status": "opened | clicked | replied | booked_meeting",
+            "timestamp": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "feedback_trainer",
+      "agent": "FeedbackTrainerAgent",
+      "inputs": {
+        "responses": "{{response_tracking.output.responses}}",
+        "campaign_id": "{{send_outreach.output.campaign_id}}"
+      },
+      "instructions": "Analyze engagement metrics and suggest next-step optimizations (subject line tweaks, ICP adjustments). Log feedback into Google Sheets for continuous learning.",
+      "tools": [
+        {
+          "name": "write_to_google_sheet",
+          "config": {
+            "sheet_id": "{{SHEET_ID}}",
+            "credentials_path": "{{GOOGLE_APPLICATION_CREDENTIALS}}"
+          }
+        }
+      ],
+      "output_schema": {
+        "recommendations": [
+          {
+            "type": "string",
+            "description": "string",
+            "priority": "string"
+          }
+        ],
+        "sheet_update_status": "string"
+      }
+    }
+  ]
+}

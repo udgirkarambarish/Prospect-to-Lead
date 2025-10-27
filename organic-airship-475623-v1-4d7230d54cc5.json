@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "organic-airship-475623-v1",
+  "private_key_id": "4d7230d54cc5901c83bea4d8d19c5326e1955967",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCwLmZ69KU2dTz5\nze7bkfj5e57Y0MB+uUgCs8vD5WE95eayNOf2gNM5LTMh55kTNka4T6pnGgrkIvWh\naOmUU9u5OXGaDPaQrBeWjKB3Lw2NTIUCnsKYbie1RSEcEabaYvD+9tHY90U6+jIc\nsAimtvpGo2dyWuYEJ3O4BzBi9KryykwZLbSK9CSd0zjUOl4HBisl9Irt7hqer0Fp\nPLrdRTxy8DXZFpAdE3ikeuCJhG75/dHllMN+F1sbRVcphntEcIOAXq3jMPC/c55g\nNBWlpNhoW0S+/B7zWgEo0gHUZ6cbgKo9/nRMrUyvO4ct5SuIi414pG7BHdM/RUBp\nHcjehoxZAgMBAAECgf8aCP2QoqlWimJUnpRcrTs9sfnM/bHtCCVDm1H/alVJHYx7\nxXeYe3xg7T/XuWO2hAkn1WHAojTQZ3C7kRKKB+HukfnfNUsy8/81iZ3LDhgO0tDr\nqqxAdKx0z/j/43Y/FwlcpCgPgGvl60Ql7dYOJ0OU5TK1OReqRX0OnGrEcQz3uWcO\nqB6ljxV9weVm9gTahXOUK1wMafWU2aZdwbsTtEvrubDlS6ZfiLXVeLJ2eLU+OUpS\nNNgz7kbAjys5OrwINHz2PGrqOIn8+EZLMeGfCvGeyBE82XfOlHeG5xCvBcyhpDGm\nC7eDLV+qvlcJ0NFkryJetA8BakEaTMVsWNltZAECgYEA1yAbnAZeZuL95Y8qySWt\nMDMZuNdIf4T6QYI9SyIRATWlcFOGGso9skAcb9wmcG19KlFcAj3tLK875Fc+ysi4\nqT21z7GIZGPcdg7O6sjw3ijBDabvGYeBXQH8knwLEKNxq/D85WaL3F+8jnF0gPBJ\nH8hB4ZjojwOIEbAIrgTRTAECgYEA0agDagG1kTTERkw/VaZP5msYidwSxRO7S8Kc\nQtTFVTZG+tacPaX6emlPDfTSULBKsO2OwinAidTkhBBrGgovCIyskb2u1K7sZ5Ek\nSzRkH/S8Urp5Mb24b65PQ3kBTIhITRgVoAUMw5z4eyH8T9EeKwv97bcW5d+FUAsH\nOCRDIFkCgYEAnZb2wshjlUlJp0XGmQ2RnlKA0Ehc4pV+YkjPL9/nxxQOeoelILDw\nm0idzE/glNGQNFTfawEEYoyH+lDzPcfmhowfSOOLv8brtExKxfGniYcfTSnx06jR\nWlnfNUvLK0ggOE3UZRRG9ovnbA2uw9nCJ5cis+m4yzNSFWr4IMqErAECgYEArK2v\nMi56N0C4sBW4zHiQsn1e1p0WMI/R4dJGFZ1dcpOj3pHIWdZM+WmnHR2Z469vtU3U\nGQN+e4eHN2a2b9oXZvlGYTtTtgTk3WBj/jUGinNucMz5aQiT0hhFXJNbiIdu1WCS\n3xuJqcuttO0G/U6FhHr6CEKWb3qsOIL8zTbAuvECgYAe4JTX64KqL6nra0RH6d3g\nfyV/HFa0DTWzuc3jJHchRu1boJfnDRq1KpCDPjpiEpwYJBiojW/KEoB2P1m9Tm+l\nRzIQtn6GmEciUD63KKQ5nDhdlOlxl6ugFIA0iIye5sM1l91GWSy8q0Q4nZX+KAOh\naDhOcM9n6u7yHhb+3b62Lw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "udgirkar10@organic-airship-475623-v1.iam.gserviceaccount.com",
+  "client_id": "115269685451694519207",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/udgirkar10%40organic-airship-475623-v1.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

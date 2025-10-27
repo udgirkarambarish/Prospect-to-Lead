@@ -1,0 +1,19 @@
+# Core LangChain and LangGraph Framework
+langchain==0.2.5
+langchain-core==0.2.9
+langgraph==0.1.1
+
+# Google Gemini Integration
+langchain-google-genai==1.0.5
+google-generativeai==0.5.4
+
+# Google Sheets API Client
+google-api-python-client==2.134.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.0
+
+# Other API Clients and Utilities
+python-dotenv==1.0.1
+pydantic==2.7.4
+requests==2.32.3
+sendgrid==6.11.0
