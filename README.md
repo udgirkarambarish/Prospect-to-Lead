@@ -174,5 +174,3 @@ The system is designed to be modular and configurable via `workflow.json`.
 
 <!-- end list -->
 
-```
-```
