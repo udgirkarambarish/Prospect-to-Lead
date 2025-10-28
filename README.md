@@ -1,5 +1,3 @@
-Okay, based on the final code versions you provided and the project requirements, here is the `README.md` file content. You can copy and paste this directly into your `README.md` file.
-
 # Autonomous B2B Prospecting Engine with LangGraph
 
 This project implements an end-to-end autonomous agent system using LangGraph to discover, enrich, score, contact B2B prospects, and learn from feedback. The entire workflow is dynamically configured and orchestrated via a single `workflow.json` file.
